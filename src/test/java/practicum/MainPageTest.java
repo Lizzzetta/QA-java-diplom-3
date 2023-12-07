@@ -29,8 +29,13 @@ public class MainPageTest extends TestBase
 
         MainPage mainPage = new MainPage(webDriver);
 
-        mainPage.clickOnSectionTab(sectionForRemoveFocusFromTargetSection);
+        if (mainPage.isSectionVisibleInViewport(targetSection))
+        {
+            mainPage.clickOnSectionTab(sectionForRemoveFocusFromTargetSection);
+            mainPage.waitUntilSectionVisible(sectionForRemoveFocusFromTargetSection);
+        }
+
         mainPage.clickOnSectionTab(targetSection);
-        mainPage.checkSectionVisible(targetSection);
+        mainPage.waitUntilSectionVisible(targetSection);
     }
 }

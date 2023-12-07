@@ -1,13 +1,11 @@
 package practicum;
 
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.WebDriver;
 import practicum.pageobject.RegisterPage;
 
 import java.util.Random;
 
 import static practicum.util.Pages.openRegisterPage;
-import static practicum.util.WebDrivers.initChromeWebDriver;
 
 public class RegisterTest extends TestBase
 {
@@ -19,7 +17,6 @@ public class RegisterTest extends TestBase
         String password = "test_password";
         String name = "test_name";
 
-        WebDriver webDriver = initChromeWebDriver();
         openRegisterPage(webDriver);
 
         RegisterPage registerPage = new RegisterPage(webDriver);
@@ -41,7 +38,6 @@ public class RegisterTest extends TestBase
         String shortPassword = "test_";
         String name = "test_name";
 
-        WebDriver webDriver = initChromeWebDriver();
         openRegisterPage(webDriver);
 
         RegisterPage registerPage = new RegisterPage(webDriver);

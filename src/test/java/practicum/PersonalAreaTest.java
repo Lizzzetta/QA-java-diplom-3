@@ -1,14 +1,12 @@
 package practicum;
 
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.WebDriver;
 import practicum.pageobject.*;
 
 import java.util.Random;
 
 import static practicum.util.Logins.loginByUser;
 import static practicum.util.Pages.openLoginPage;
-import static practicum.util.WebDrivers.initChromeWebDriver;
 
 public class PersonalAreaTest extends TestBase
 {
@@ -22,7 +20,6 @@ public class PersonalAreaTest extends TestBase
 
         userClient.registerUser(email, password, name);
 
-        WebDriver webDriver = initChromeWebDriver();
         openLoginPage(webDriver);
 
         MainPage mainPage = new MainPage(webDriver);
@@ -46,7 +43,6 @@ public class PersonalAreaTest extends TestBase
 
         userClient.registerUser(email, password, name);
 
-        WebDriver webDriver = initChromeWebDriver();
         openLoginPage(webDriver);
 
         MainPage mainPage = new MainPage(webDriver);
@@ -73,7 +69,6 @@ public class PersonalAreaTest extends TestBase
 
         userClient.registerUser(email, password, name);
 
-        WebDriver webDriver = initChromeWebDriver();
         openLoginPage(webDriver);
 
         MainPage mainPage = new MainPage(webDriver);

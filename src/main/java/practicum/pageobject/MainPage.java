@@ -41,11 +41,27 @@ public class MainPage
         driver.findElement(By.xpath(".//span[text() = '" + title + "']")).click();
     }
 
-    @Step("Check section visible")
-    public void checkSectionVisible(String title)
+    @Step("Wait until section visible")
+    public void waitUntilSectionVisible(String title)
     {
-        new WebDriverWait(driver, 300).until(ExpectedConditions.elementToBeClickable(
-                By.xpath(".//h2[text() = '" + title + "']")
-        ));
+        new WebDriverWait(driver, 3).until(webDriver -> isSectionVisibleInViewport(title));
+    }
+
+    @Step("Get section visibility in viewport")
+    public boolean isSectionVisibleInViewport(String title)
+    {
+        return (Boolean)((JavascriptExecutor)driver).executeScript(
+                "var elem = arguments[0],                 " +
+                        "  box = elem.getBoundingClientRect(),    " +
+                        "  cx = box.left + box.width / 2,         " +
+                        "  cy = box.top + box.height / 2,         " +
+                        "  e = document.elementFromPoint(cx, cy); " +
+                        "for (; e; e = e.parentElement) {         " +
+                        "  if (e === elem)                        " +
+                        "    return true;                         " +
+                        "}                                        " +
+                        "return false;                            ",
+                driver.findElement(By.xpath(".//h2[text() = '" + title + "']"))
+        );
     }
 }

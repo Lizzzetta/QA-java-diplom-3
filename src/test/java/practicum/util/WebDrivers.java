@@ -15,7 +15,7 @@ public final class WebDrivers
         WebDriverManager.chromedriver().setup();
 
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage", "--window-size=1200,600");
         return new ChromeDriver(options);
     }
 }
